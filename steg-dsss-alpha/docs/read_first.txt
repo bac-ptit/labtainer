@@ -1,0 +1,48 @@
+==============================================================
+   LAB: steg-dsss-alpha
+   Do nhay DSSS theo he so nhung alpha
+==============================================================
+
+Muc tieu:
+  So sanh 4 muc alpha: 0.01, 0.03, 0.05, 0.10.
+  Alpha lon giup tach tin ro hon nhung lam tin hieu stego
+  khac host nhieu hon. Lab nay yeu cau sinh vien do ca hai
+  mat: kha nang tach tin va do meo tin hieu.
+
+Kien thuc:
+  - DSSS audio steganography
+  - PN code va chip sequence
+  - Correlation-based extraction
+  - RMS distortion, peak difference, SNR
+  - Trade-off giua detectability va recoverability
+
+Cac buoc thuc hien (chay TUAN TU):
+
+  python3 step1_generate_host.py          # Tao host.wav, bits, PN code
+  python3 step2_create_chip_sequence.py   # Trai pho HELLO -> 320 chip
+  python3 step3_embed_alpha_levels.py     # Nhung voi alpha 0.01/0.03/0.05/0.10
+  python3 step4_extract_alpha_levels.py   # Tach tin va tinh BER/correlation
+  python3 step5_measure_distortion.py     # Do RMS diff, peak diff, SNR
+  python3 step6_plot_alpha_tradeoff.py    # Ve 4 bieu do trade-off
+
+Cac bieu do sinh ra:
+  01_alpha_waveforms.png    - Host vs stego theo tung alpha
+  02_alpha_distortion.png   - RMS distortion theo alpha
+  03_alpha_correlation.png  - Mean |correlation| theo alpha
+  04_alpha_tradeoff.png     - Trade-off extraction/distortion
+
+Xem bieu do:
+  feh *.png
+  eog 04_alpha_tradeoff.png
+
+Khi xong, chay:
+  stoplab steg-dsss-alpha
+  checkwork steg-dsss-alpha
+
+Cham diem 6 muc tieu:
+  prepare_dsss_inputs       - Tao host.wav + message_bits.txt + pn_code.txt
+  create_chip_sequence      - Tao chip_sequence.txt >= 320 dong
+  embed_alpha_levels        - Tao du 4 file stego_alpha_*.wav
+  extract_alpha_messages    - Tao alpha_extraction_results.txt
+  measure_alpha_distortion  - Tao alpha_distortion_metrics.txt
+  plot_alpha_tradeoff       - Ve du 4 file PNG
