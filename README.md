@@ -3,8 +3,8 @@
 Install the DSSS steganography labs directly with `imodule`:
 
 ```bash
-imodule https://github.com/bac-ptit/labtainer/raw/main/steg-dsss-embed.tar.gz
-imodule https://github.com/bac-ptit/labtainer/raw/main/steg-dsss-noise.tar.gz
+imodule https://github.com/bac-ptit/labtainer/raw/main/steg-dsss-embed.tar
+imodule https://github.com/bac-ptit/labtainer/raw/main/steg-dsss-noise.tar
 ```
 
 Run the labs:
