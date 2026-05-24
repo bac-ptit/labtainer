@@ -1,0 +1,43 @@
+==============================================================
+   LAB: steg-dsss-noise
+   Khang nhieu DSSS - Do BER theo muc nhieu AWGN
+==============================================================
+
+Muc tieu:
+  Danh gia kha nang khang nhieu cua ky thuat giau tin DSSS.
+  Them nhieu Gaussian (AWGN) vao tin hieu stego o nhieu muc
+  SNR khac nhau, sau do trich xuat message va tinh BER.
+
+Kien thuc:
+  - AWGN (Additive White Gaussian Noise)
+  - SNR (Signal-to-Noise Ratio) - ti so tin hieu tren nhieu
+  - BER (Bit Error Rate) - ti le bit loi
+  - Processing Gain cua DSSS = so chip/bit (8 = 9 dB)
+  - Correlation-based detection
+
+Cac buoc thuc hien (chay TUAN TU):
+
+  python3 step1_prepare_stego.py      # Tao stego.wav (nhung "HELLO")
+  python3 step2_add_noise.py          # Them AWGN o 8 muc SNR
+  python3 step3_extract_from_noisy.py # Trich xuat + tinh BER
+  python3 step4_plot_ber.py           # Ve 4 bieu do phan tich
+
+Cac bieu do sinh ra:
+  01_ber_vs_snr.png        - BER theo SNR (do thi chinh)
+  02_signal_comparison.png - So sanh host / stego / noisy
+  03_spectrum_noisy.png    - Pho FFT stego vs noisy
+  04_correlation_map.png   - Gia tri correlation moi bit theo SNR
+
+Xem bieu do:
+  feh *.png                # Xem tat ca, n/p de chuyen
+  eog 01_ber_vs_snr.png    # Mo tung anh
+
+Khi xong, chay:
+  stoplab steg-dsss-noise
+  checkwork steg-dsss-noise
+
+Cham diem 4 muc tieu:
+  prepare_stego_signal     - Tao stego.wav + host.wav + PN + bits
+  generate_noisy_signals   - Them AWGN o nhieu muc SNR
+  extract_and_compute_ber  - Trich xuat va tinh BER
+  visualize_ber_analysis   - Ve du 4 bieu do phan tich

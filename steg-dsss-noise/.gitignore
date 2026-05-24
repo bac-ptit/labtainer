@@ -1,0 +1,17 @@
+students/*.tar.gz
+students/sys_*.tar.gz
+*.wav
+*.png
+message_bits.txt
+pn_code.txt
+chip_sequence.txt
+snr_levels.txt
+extraction_results.txt
+plots_done.txt
+check_artifacts.txt
+noisy_*.wav
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+.idea/

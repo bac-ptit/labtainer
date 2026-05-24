@@ -1,0 +1,42 @@
+==============================================================
+   LAB: steg-dsss-embed
+   Giau tin (audio steganography) bang ky thuat DSSS
+==============================================================
+
+Muc tieu:
+  Giau chuoi "HELLO" vao mot song sin (host signal) bang
+  ky thuat trai pho DSSS, sau do ve cac bieu do truc quan
+  qua trinh nhung tin.
+
+Cac buoc thuc hien (chay TUAN TU tung lenh):
+
+  python3 step1_create_host.py        # Tao song sin host -> host.wav
+  python3 step2_message_to_bits.py    # "HELLO" -> 40 bit -> message_bits.txt
+  python3 step3_generate_pn.py        # Sinh PN code 8 chip -> pn_code.txt
+  python3 step4_spread.py             # Trai pho DSSS -> chip_sequence.txt
+  python3 step5_embed.py              # Nhung chip vao host -> stego.wav
+  python3 step6_plot_signals.py       # Ve 6 bieu do PNG
+
+Cac bieu do sinh ra (mo bang mot trong cac lenh duoi):
+  feh *.png                # Xem all 6 anh, n/p de chuyen
+  eog 01_host_sine.png     # Mo tung anh
+  xdg-open 06_spectrum.png # Tu chon viewer mac dinh
+
+  01_host_sine.png        - Song sin host goc
+  02_pn_sequence.png      - Chuoi PN code
+  03_message_bits.png     - Bits cua "HELLO"
+  04_chip_sequence.png    - Tin hieu chip sau khi trai pho
+  05_stego_vs_host.png    - So sanh host vs stego
+  06_spectrum.png         - Pho FFT host vs stego
+
+Khi xong tat ca, chay:
+  stoplab steg-dsss-embed
+  checkwork steg-dsss-embed
+
+Cham diem 6 muc tieu (moi muc 1 buoc DSSS):
+  create_host_signal       - Tao host.wav
+  encode_message_to_bits   - Ma hoa "HELLO" -> 40 bit
+  generate_pn_code         - Sinh PN code 8 chip
+  spread_dsss_chips        - Trai pho DSSS -> 320 chip
+  embed_stego_audio        - Nhung chip vao host -> stego.wav
+  visualize_dsss_plots     - Ve du 6 file PNG
