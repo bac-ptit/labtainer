@@ -1,0 +1,32 @@
+==============================================================
+   LAB: scene-h264-stego
+   Giau tin trong video theo scene-change va H.264
+==============================================================
+
+Chay lan luot:
+
+  python3 step1_create_cover_video.py
+  python3 step2_detect_scene_changes.py cover_h264.mp4
+  python3 step3_message_to_bits.py message.txt
+  python3 step4_embed_scene_bits.py cover_h264.mp4 selected_frames.txt message_bits.txt
+  python3 step5_extract_scene_bits.py stego_h264.mp4 embed_map.txt
+  python3 step6_evaluate_h264_quality.py cover_h264.mp4 stego_h264.mp4
+
+Ket qua mong doi:
+
+  recovered_message.txt phai chua:
+  SCENE_H264_STEGO_OK
+
+Checkwork 6 muc:
+
+  create_cover_h264
+  detect_scene_changes
+  encode_secret_bits
+  embed_scene_stego
+  extract_hidden_message
+  evaluate_h264_quality
+
+Khi xong:
+
+  stoplab scene-h264-stego
+  checkwork scene-h264-stego
