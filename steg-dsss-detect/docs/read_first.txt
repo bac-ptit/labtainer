@@ -1,0 +1,52 @@
+==============================================================
+   LAB: steg-dsss-detect
+   Phat hien watermark DSSS trong audio bang correlation
+==============================================================
+
+Muc tieu:
+  Cho hai file audio test, dung PN code va DSSS correlation de
+  xac dinh file nao co chua watermark an.
+
+Cac buoc thuc hien:
+
+  python3 step1_prepare_audio.py         # Tao host, clean_test, stego_test
+  python3 step2_generate_signature.py    # Tao PN code + DSSS chip signature
+  python3 step3_detect_watermark.py      # Tinh score va viet report detect
+  python3 step4_plot_detection.py        # Ve 4 bieu do minh hoa
+  python3 step5_write_summary.py         # Viet tom tat ket qua
+
+Cac file ket qua chinh:
+
+  host.wav
+  clean_test.wav
+  stego_test.wav
+  pn_code.txt
+  message_bits.txt
+  chip_sequence.txt
+  detection_scores.txt
+  detection_report.txt
+  student_summary.txt
+
+Cac bieu do:
+
+  01_test_audio_waveforms.png
+  02_dsss_signature.png
+  03_detection_scores.png
+  04_correlation_traces.png
+
+Ket qua mong doi:
+  clean_test.wav  -> CLEAN
+  stego_test.wav  -> WATERMARK_PRESENT
+
+Khi xong, chay:
+
+  stoplab steg-dsss-detect
+  checkwork steg-dsss-detect
+
+Cham diem 5 muc tieu:
+
+  prepare_detection_audio  - Tao du 3 file WAV
+  create_dsss_signature    - Tao PN/message/chip signature
+  run_watermark_detector   - Phat hien dung stego_test.wav
+  plot_detection_results   - Ve du 4 file PNG
+  write_detection_summary  - Viet student_summary.txt

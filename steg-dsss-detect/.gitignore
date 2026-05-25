@@ -1,0 +1,28 @@
+# Labtainer auto-generated artifacts
+students/*.tar.gz
+students/sys_*.tar.gz
+
+# Student-generated artifacts (sinh ra khi chay lab)
+*.wav
+*.png
+message_bits.txt
+pn_code.txt
+chip_sequence.txt
+plots_done.txt
+check_artifacts.txt
+detection_scores.txt
+detection_report.txt
+correlation_*.txt
+signature_params.txt
+student_summary.txt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
