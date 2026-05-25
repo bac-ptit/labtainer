@@ -24,6 +24,20 @@ Lab Labtainer ve **giau tin trong video dua tren thay doi khung canh va video H.
 
 ## 3. Cach chay lab
 
+Tai qua imodule:
+
+```bash
+imodule https://raw.githubusercontent.com/bac-ptit/labtainer/main/scene-h264-stego-hoangbac2004-imodule.tar
+```
+
+Image Docker da push:
+
+```bash
+docker pull hoangbac2004/scene-h264-stego.students.student:latest
+```
+
+Chay lab:
+
 ```bash
 labtainer scene-h264-stego
 ```

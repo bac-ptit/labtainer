@@ -5,6 +5,16 @@
 - Ten lab: `scene-h264-stego`
 - Chu de: giau tin trong video dua tren scene-change va video H.264.
 - Huong thuc hien: chon frame ngay sau scene-change, nhung bit bang patch sang/toi nho, encode lai bang H.264 lossless, trich xuat thong diep tu video stego.
+- Docker image: `hoangbac2004/scene-h264-stego.students.student:latest`
+- Imodule: `scene-h264-stego-hoangbac2004-imodule.tar`
+
+## Lenh tai va chay
+
+```bash
+imodule https://raw.githubusercontent.com/bac-ptit/labtainer/main/scene-h264-stego-hoangbac2004-imodule.tar
+docker pull hoangbac2004/scene-h264-stego.students.student:latest
+labtainer -r scene-h264-stego
+```
 
 ## Lenh chay
 
@@ -40,6 +50,13 @@ BITS_OK
 EMBED_OK
 EXTRACT_OK
 QUALITY_OK
+```
+
+## Docker push
+
+```text
+docker push hoangbac2004/scene-h264-stego.students.student:latest
+latest: digest: sha256:a56d8ca1ccd9877291d750bf52a03decb5199bd4e8bb3365fd81f2abd03fcfa8 size: 7606
 ```
 
 ## Checkwork
