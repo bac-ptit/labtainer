@@ -1,0 +1,18 @@
+LAB: h264-iframe-scene-stego
+Giau tin vao I-frame tai cac diem hard scene cut trong video H.264.
+
+Chay lan luot:
+
+  python3 step1_create_hardcut_video.py
+  python3 step2_detect_scene_cuts.py cover_h264.mp4
+  python3 step3_extract_iframe_targets.py cover_h264.mp4 scene_cuts.txt
+  python3 step4_embed_iframe_dct_lsb.py cover_h264.mp4 iframe_targets.txt message.txt
+  python3 step5_extract_iframe_payload.py stego_h264.mp4 embed_map.txt
+  python3 step6_evaluate_capacity_quality.py cover_h264.mp4 stego_h264.mp4
+
+Ket qua mong doi:
+  recovered_message.txt -> IFRAME_SCENE_H264_OK
+
+Checkwork:
+  stoplab h264-iframe-scene-stego
+  checkwork h264-iframe-scene-stego

@@ -1,0 +1,18 @@
+LAB: h264-fade-mv-stego
+Giau tin vao Motion Vector trong doan fade/dissolve cua video H.264.
+
+Chay lan luot:
+
+  python3 step1_create_fade_video.py
+  python3 step2_analyze_motion_vectors.py fade_h264.mp4
+  python3 step3_filter_motion_vectors.py motion_vectors.csv
+  python3 step4_embed_mv_lsb.py fade_h264.mp4 selected_mvs.csv message.txt
+  python3 step5_extract_mv_payload.py stego_fade_h264.mp4 mv_embed_map.txt
+  python3 step6_evaluate_bitrate_stats.py fade_h264.mp4 stego_fade_h264.mp4
+
+Ket qua mong doi:
+  recovered_message.txt -> FADE_MV_H264_OK
+
+Checkwork:
+  stoplab h264-fade-mv-stego
+  checkwork h264-fade-mv-stego

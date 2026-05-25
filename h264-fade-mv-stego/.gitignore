@@ -1,0 +1,45 @@
+# Labtainer auto-generated artifacts
+students/*.tar.gz
+students/sys_*.tar.gz
+
+# Student-generated artifacts
+*.mp4
+*.ppm
+cover_frames/
+fade_frames/
+decoded_cover/
+decoded_fade/
+decoded_stego/
+decoded_stego_fade/
+stego_frames/
+stego_fade_frames/
+scene_changes.txt
+selected_frames.txt
+motion_vectors.csv
+selected_mvs.csv
+mv_filter_report.txt
+mv_embed_map.txt
+message_bits.txt
+message_length.txt
+embed_map.txt
+recovered_bits.txt
+recovered_message.txt
+quality_report.txt
+bitrate_report.txt
+statistics_report.txt
+h264_report.txt
+cover_metadata.txt
+fade_metadata.txt
+stego_metadata.txt
+check_artifacts.txt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
