@@ -15,6 +15,7 @@ ADD $labdir/sys_$lab.tar.gz /
 RUN useradd -ms /bin/bash $user_name
 RUN echo "$user_name:$password" | chpasswd
 RUN adduser $user_name sudo
+RUN mkdir -p /home/$user_name/.local/bin && chown -R $user_name:$user_name /home/$user_name/.local
 RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg python3-pip
 USER $user_name
 ENV HOME /home/$user_name
