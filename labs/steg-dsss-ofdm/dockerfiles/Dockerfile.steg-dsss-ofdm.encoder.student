@@ -8,7 +8,6 @@ ARG password
 ARG apt_source
 ARG version
 LABEL version=$version
-LABEL base=labtainers/labtainer.base2
 ENV APT_SOURCE $apt_source
 RUN /usr/bin/apt-source.sh
 ADD $labdir/$imagedir/sys_tar/sys.tar /
