@@ -1,0 +1,4 @@
+Kerberos Cross-Realm Trust & Federation Single Sign-On (SSO) Lab.
+Evaluates inter-realm ticket referrals (STUDENT.LAB -> RESEARCH.LAB),
+cross-realm Web SPNEGO and SSH SSO, authorization restrictions (.k5login),
+transited path policy, and AES-256 cryptographic enforcement.

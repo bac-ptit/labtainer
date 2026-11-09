@@ -1,0 +1,4 @@
+Kerberos Pass-the-Ticket & Ccache Hardening Lab.
+Evaluates credential cache theft from flat files (/tmp/krb5cc_*),
+session impersonation across Web SPNEGO & SSH, and remediation via
+Linux Kernel Keyring (KEYRING:persistent) and session lifecycle hardening.

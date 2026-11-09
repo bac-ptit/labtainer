@@ -1,0 +1,1 @@
+kerberos, sso, silver-ticket, keytab, forgery, spn, rotation, mitre-t1558-002

@@ -1,0 +1,120 @@
+\input{header}
+\begin{document}
+
+\begin{center}
+{\LARGE Kerberos Single Sign-On (SSO) Simulation Lab}
+\vspace{0.1in}\\
+\end{center}
+
+\section{Overview}
+This laboratory illustrates the operation, security mechanics, and attack vectors of the 
+\textbf{Kerberos v5 Single Sign-On (SSO)} architecture in an enterprise network.
+Kerberos allows users to authenticate once with a Key Distribution Center (KDC) and obtain
+credential tickets that grant seamless access to network services (such as Web Intranet portals
+and Secure Shell servers) without re-entering passwords.
+
+\subsection{Learning Objectives}
+\begin{enumerate}
+    \item Understand the 3-step Kerberos protocol lifecycle: Authentication Service (AS), Ticket Granting Service (TGS), and Application Exchange (AP).
+    \item Analyze raw Kerberos protocol packets (ASN.1 structures) using Wireshark.
+    \item Configure and evaluate Web Single Sign-On using HTTP Negotiate and SPNEGO (RFC 4559) with Apache {\tt mod\_auth\_gssapi}.
+    \item Demonstrate Secure Shell (SSH) SSO and credential delegation using OpenSSH GSS-API.
+    \item Conduct offensive security assessments: AS-REP Roasting (exploiting accounts without pre-authentication) and Kerberoasting (cracking service tickets offline).
+    \item Implement defense hardening: Enforcing pre-authentication and strong encryption ciphers (AES-256).
+\end{enumerate}
+
+\section{Lab Environment}
+The virtual laboratory topology consists of four interconnected Docker containers on the {\tt 172.25.0.0/24} network:
+\begin{itemize}
+    \item {\bf kdc (172.25.0.10):} MIT Kerberos Key Distribution Center managing the {\tt LAB.LAN} realm.
+    \item {\bf web (172.25.0.20):} Corporate Intranet Web Server running Apache with GSSAPI SPNEGO authentication.
+    \item {\bf ssh (172.25.0.30):} File/Jump Server running OpenSSH with GSSAPI authentication and delegation.
+    \item {\bf client (172.25.0.50):} Student workstation logged in as user {\tt alice}, equipped with Wireshark, Firefox, and security assessment tools.
+\end{itemize}
+
+Start the lab from your {\tt labtainer-student} directory using:
+\begin{verbatim}
+    labtainer sso-kerberos
+\end{verbatim}
+
+\section{Lab Tasks}
+
+\subsection{Task 1: Initial Authentication and Protocol Dissection}
+\begin{enumerate}
+    \item On the client terminal, start Wireshark to monitor traffic on interface {\tt eth0}:
+    \begin{verbatim}
+        wireshark &
+    \end{verbatim}
+    Apply the display filter {\tt kerberos}.
+    \item Request an initial Ticket Granting Ticket (TGT):
+    \begin{verbatim}
+        kinit alice
+    \end{verbatim}
+    Enter password: {\tt Password123!}
+    \item Inspect cached credentials using:
+    \begin{verbatim}
+        klist
+    \end{verbatim}
+    Observe the client principal ({\tt alice@LAB.LAN}), the service principal ({\tt krbtgt/LAB.LAN@LAB.LAN}), and ticket validity flags.
+    \item In Wireshark, inspect the {\tt AS-REQ} and {\tt AS-REP} packets. Locate the {\tt padata} (pre-authentication timestamp) and note the symmetric cipher used.
+\end{enumerate}
+
+\subsection{Task 2: Web Single Sign-On (HTTP SPNEGO)}
+\begin{enumerate}
+    \item Attempt unauthenticated access to the protected corporate intranet:
+    \begin{verbatim}
+        curl -i http://web.lab.lan/intranet/index.html
+    \end{verbatim}
+    Observe the {\tt 401 Unauthorized} response with the {\tt WWW-Authenticate: Negotiate} header.
+    \item Request access using Kerberos SSO negotiation:
+    \begin{verbatim}
+        curl -i --negotiate -u : http://web.lab.lan/intranet/index.html
+    \end{verbatim}
+    Observe the {\tt 200 OK} response and note your unique student validation flag token.
+    \item Re-run {\tt klist} to verify that a new Service Ticket for {\tt HTTP/web.lab.lan@LAB.LAN} has been automatically cached.
+    \item Open Firefox to verify graphical Web SSO:
+    \begin{verbatim}
+        firefox http://web.lab.lan/intranet/index.html &
+    \end{verbatim}
+    Notice that no login dialog is presented; authentication is completely transparent.
+\end{enumerate}
+
+\subsection{Task 3: Shell SSO and Credential Delegation (SSH GSS-API)}
+\begin{enumerate}
+    \item Connect via SSH to the remote jump server without entering a password:
+    \begin{verbatim}
+        ssh alice@ssh.lab.lan
+    \end{verbatim}
+    \item Once logged into {\tt ssh.lab.lan}, verify that your TGT was forwarded (delegated):
+    \begin{verbatim}
+        klist
+    \end{verbatim}
+    \item View the confidential project file:
+    \begin{verbatim}
+        cat confidential_project.txt
+        exit
+    \end{verbatim}
+\end{enumerate}
+
+\subsection{Task 4: Offensive Security Assessments}
+\begin{enumerate}
+    \item {\bf AS-REP Roasting:} Execute the pre-configured script targeting the {\tt backup\_svc} account:
+    \begin{verbatim}
+        ./attack_asrep_roast.sh
+    \end{verbatim}
+    Observe how the KDC returns an encrypted AS-REP without requiring pre-authentication, and observe John the Ripper cracking the plaintext password offline.
+    \item {\bf Kerberoasting:} Execute the Kerberoasting script targeting the database service SPN:
+    \begin{verbatim}
+        ./attack_kerberoast.sh
+    \end{verbatim}
+    Observe how any authenticated domain user can request service tickets for registered SPNs and crack weak service passwords offline.
+\end{enumerate}
+
+\section{Submission and Grading}
+After completing all tasks, stop the lab from your host terminal using:
+\begin{verbatim}
+    stoplab sso-kerberos
+\end{verbatim}
+The framework will automatically package your session artifacts. Instructors can evaluate completion using the automated grading engine.
+
+\end{document}

@@ -1,0 +1,3 @@
+#!/bin/bash
+klist > /tmp/klist.txt 2>&1
+chmod 666 /tmp/klist.txt

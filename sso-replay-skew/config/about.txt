@@ -1,0 +1,3 @@
+Kerberos Replay Attack, Clock Skew & Replay Cache Lab.
+Evaluates timestamp-based authenticators, maximum clock skew enforcement (KRB_AP_ERR_SKEW),
+network authenticator replay vulnerability, and defense via Kerberos Replay Cache (KRB_AP_ERR_REPEAT).

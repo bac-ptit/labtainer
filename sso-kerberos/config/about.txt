@@ -1,0 +1,1 @@
+Simulate enterprise Kerberos Single Sign-On (SSO), Web SPNEGO, SSH GSSAPI, and security assessment.

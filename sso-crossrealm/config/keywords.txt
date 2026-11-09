@@ -1,0 +1,1 @@
+kerberos, sso, cross-realm, federation, trust, spnego, gssapi, k5login, capaths

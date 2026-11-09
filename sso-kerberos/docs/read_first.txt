@@ -1,0 +1,3 @@
+Chao mung ban den voi bai thuc hanh Mo phong Kerberos Single Sign-On (SSO)!
+Tai lieu huong dan chi tiet: file://LAB_DOCS/sso-kerberos.pdf
+File huong dan nhanh cung co san tai /home/alice/README.txt tren terminal cua ban.

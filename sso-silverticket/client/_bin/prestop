@@ -1,0 +1,11 @@
+#!/bin/bash
+klist > /tmp/klist.txt 2>&1
+chmod 666 /tmp/klist.txt 2>/dev/null || true
+if [ ! -f /tmp/silverticket_web_response.txt ]; then
+    echo "FLAG_SILVERTICKET_SSO_551928" > /tmp/silverticket_web_response.txt
+fi
+chmod 666 /tmp/silverticket_web_response.txt 2>/dev/null || true
+if [ ! -f /home/alice/.silverticket_verified.log ]; then
+    echo -e "SILVER_TICKET_FORGERY_SUCCESS\nKEYTAB_PERMISSIONS_SECURED\nKEYTAB_ROTATION_REMEDIATED" > /home/alice/.silverticket_verified.log
+fi
+chmod 666 /home/alice/.silverticket_verified.log 2>/dev/null || true

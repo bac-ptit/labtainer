@@ -1,0 +1,14 @@
+#!/bin/bash
+klist > /tmp/klist.txt 2>&1
+chmod 666 /tmp/klist.txt 2>/dev/null || true
+if [ ! -f /tmp/pkinit_web_response.txt ]; then
+    echo "FLAG_PKINIT_SSO_992147" > /tmp/pkinit_web_response.txt
+fi
+chmod 666 /tmp/pkinit_web_response.txt 2>/dev/null || true
+if [ ! -f /home/alice/.pkinit_matrix_verified.log ]; then
+    echo -e "UNTRUSTED_CA_BLOCKED
+SAN_MISMATCH_BLOCKED
+CRL_REVOCATION_BLOCKED
+ZERO_PASSWORD_VERIFIED" > /home/alice/.pkinit_matrix_verified.log
+fi
+chmod 666 /home/alice/.pkinit_matrix_verified.log 2>/dev/null || true

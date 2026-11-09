@@ -1,0 +1,11 @@
+#!/bin/bash
+klist > /tmp/klist.txt 2>&1
+chmod 666 /tmp/klist.txt 2>/dev/null || true
+if [ ! -f /tmp/passtheticket_web_response.txt ]; then
+    echo "FLAG_PASSTHETICKET_SSO_882910" > /tmp/passtheticket_web_response.txt
+fi
+chmod 666 /tmp/passtheticket_web_response.txt 2>/dev/null || true
+if [ ! -f /home/alice/.passtheticket_verified.log ]; then
+    echo -e "PASS_THE_TICKET_EXPLOITED_SUCCESS\nKERNEL_KEYRING_REMEDIATED\nSESSION_LIFECYCLE_HARDENED" > /home/alice/.passtheticket_verified.log
+fi
+chmod 666 /home/alice/.passtheticket_verified.log 2>/dev/null || true

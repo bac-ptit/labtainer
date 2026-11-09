@@ -1,0 +1,3 @@
+Kerberos TGS Kerberoasting Attack & Defense Lab.
+Evaluates service ticket extraction, offline cracking of service account credentials,
+enforcement of AES-256 encryption, service key rotation, and secure SPNEGO Web SSO.

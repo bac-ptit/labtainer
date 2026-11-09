@@ -1,0 +1,1 @@
+kerberos, sso, replay-attack, clock-skew, rcache, replay-cache, timestamp, spnego, rfc4120

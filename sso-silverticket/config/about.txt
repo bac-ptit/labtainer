@@ -1,0 +1,3 @@
+Kerberos Silver Ticket Forgery & Keytab Protection Lab.
+Evaluates service keytab exposure, Silver Ticket fabrication without KDC interaction,
+privilege impersonation, keytab permissions hardening, and keytab rotation remediation.

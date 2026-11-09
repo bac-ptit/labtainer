@@ -1,0 +1,1 @@
+kerberos, sso, kerberoasting, tgs, spn, spnego, aes256, cracking, mitre-t1558-003

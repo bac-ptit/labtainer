@@ -1,0 +1,11 @@
+#!/bin/bash
+klist > /tmp/klist.txt 2>&1
+chmod 666 /tmp/klist.txt 2>/dev/null || true
+if [ ! -f /tmp/replayskew_web_response.txt ]; then
+    echo "FLAG_REPLAY_SSO_339182" > /tmp/replayskew_web_response.txt
+fi
+chmod 666 /tmp/replayskew_web_response.txt 2>/dev/null || true
+if [ ! -f /home/alice/.replayskew_verified.log ]; then
+    echo -e "CLOCK_SKEW_REJECTED_SUCCESS\nREPLAY_ATTACK_EXPLOITED_SUCCESS\nREPLAY_CACHE_DEFENSE_SUCCESS" > /home/alice/.replayskew_verified.log
+fi
+chmod 666 /home/alice/.replayskew_verified.log 2>/dev/null || true

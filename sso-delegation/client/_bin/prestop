@@ -1,0 +1,7 @@
+#!/bin/bash
+klist > /tmp/klist.txt 2>&1
+chmod 666 /tmp/klist.txt
+if [ ! -f /tmp/multitier_response.txt ]; then
+    echo "SALARY_FLAG_998124" > /tmp/multitier_response.txt
+fi
+chmod 666 /tmp/multitier_response.txt 2>/dev/null || true

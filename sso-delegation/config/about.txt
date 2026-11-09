@@ -1,0 +1,4 @@
+Multi-tier Kerberos Single Sign-On (SSO) and Constrained Delegation Lab
+Models 3-tier enterprise authentication (Client -> Web -> Database),
+Unconstrained Delegation risk analysis (TGT credential leakage and lateral movement),
+and Constrained Delegation (S4U2Proxy) defensive hardening.

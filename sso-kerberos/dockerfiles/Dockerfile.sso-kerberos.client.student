@@ -1,0 +1,28 @@
+ARG registry
+FROM $registry/labtainer.wireshark2
+ARG lab
+ARG labdir
+ARG imagedir
+ARG user_name
+ARG password
+ARG apt_source
+
+RUN useradd -ms /bin/bash -u 1000 $user_name
+RUN echo "$user_name:$password" | chpasswd
+RUN adduser $user_name sudo
+RUN adduser $user_name wireshark
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    krb5-user \
+    curl \
+    john \
+    python3-impacket \
+    net-tools \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV HOME /home/$user_name
+ADD $labdir/$lab.tar.gz $HOME
+ADD $labdir/sys_$lab.tar.gz /
+
+RUN chown -R $user_name:$user_name $HOME

@@ -1,0 +1,5 @@
+Kerberos Passwordless Single Sign-On (SSO) with PKINIT (RFC 4556) Lab
+Models enterprise Public Key Cryptography for Initial Authentication (PKINIT),
+Zero-Password Kerberos principal creation (+requires_preauth -nokey),
+Certificate Authority (X.509) issuance, CRL revocation verification,
+Web SPNEGO and SSH SSO, and a rigorous 6-case empirical security test matrix.

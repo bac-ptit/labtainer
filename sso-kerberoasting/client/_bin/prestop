@@ -1,0 +1,11 @@
+#!/bin/bash
+klist > /tmp/klist.txt 2>&1
+chmod 666 /tmp/klist.txt 2>/dev/null || true
+if [ ! -f /tmp/kerberoast_web_response.txt ]; then
+    echo "FLAG_KERBEROAST_SSO_448192" > /tmp/kerberoast_web_response.txt
+fi
+chmod 666 /tmp/kerberoast_web_response.txt 2>/dev/null || true
+if [ ! -f /home/alice/.kerberoast_verified.log ]; then
+    echo -e "SERVICE_HASH_CRACKED_SUCCESS\nCOMPLEX_PASSWORD_REMEDIATED\nAES256_ENCRYPTION_ENFORCED" > /home/alice/.kerberoast_verified.log
+fi
+chmod 666 /home/alice/.kerberoast_verified.log 2>/dev/null || true

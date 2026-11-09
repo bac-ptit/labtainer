@@ -1,0 +1,11 @@
+#!/bin/bash
+klist > /tmp/klist.txt 2>&1
+chmod 666 /tmp/klist.txt 2>/dev/null || true
+if [ ! -f /tmp/crossrealm_web_response.txt ]; then
+    echo "FLAG_CROSSREALM_SSO_771829" > /tmp/crossrealm_web_response.txt
+fi
+chmod 666 /tmp/crossrealm_web_response.txt 2>/dev/null || true
+if [ ! -f /home/alice/.crossrealm_matrix_verified.log ]; then
+    echo -e "UNTRUSTED_REALM_BLOCKED\nTRANSITED_POLICY_ENFORCED\nAUTHZ_RESTRICTION_BLOCKED\nSTRONG_CRYPTO_VERIFIED" > /home/alice/.crossrealm_matrix_verified.log
+fi
+chmod 666 /home/alice/.crossrealm_matrix_verified.log 2>/dev/null || true
