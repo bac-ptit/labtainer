@@ -5,7 +5,8 @@
 **Giảng viên hướng dẫn:** TS. Quản Trọng Thế  
 **Đơn vị:** Học viện Công nghệ Bưu chính Viễn thông (PTIT)  
 **Tài khoản lưu trữ Docker Hub:** [hoangbac2004](https://hub.docker.com/u/hoangbac2004)  
-**Tài khoản lưu trữ GitHub:** [bac-ptit](https://github.com/bac-ptit)
+**Tài khoản lưu trữ GitHub:** [bac-ptit](https://github.com/bac-ptit)  
+**Tài liệu hướng dẫn tổng hợp:** [📄 HUONG_DAN_VA_DANH_SACH_LINK_IMODULE.docx](docs/reports/HUONG_DAN_VA_DANH_SACH_LINK_IMODULE.docx) | [📕 HUONG_DAN_VA_DANH_SACH_LINK_IMODULE.pdf](docs/reports/HUONG_DAN_VA_DANH_SACH_LINK_IMODULE.pdf)
 
 ---
 
@@ -15,14 +16,14 @@ Bộ 8 bài lab mô phỏng toàn diện các kiến trúc Đăng nhập một l
 
 | STT | Bài Lab | Kiến trúc SSO & Dịch vụ | Kịch bản Tấn công (Red Team) | Giải pháp Phòng thủ (Blue Team) | Báo cáo Học thuật |
 | :---: | :--- | :--- | :--- | :--- | :---: |
-| **01** | `sso-kerberos` | Web SPNEGO (Apache) & Shell SSH SSO | AS-REP Roasting (MITRE T1558.004) nhắm tài khoản tắt Pre-Auth | Bắt buộc `+requires_preauth`, KDC trả mã lỗi 25, chuẩn AES-256 | [📄 Báo cáo .docx](docs/reports/Thực%20hành%20Labtainer.docx) \| [📕 .pdf](docs/reports/Thực%20hành%20Labtainer.pdf) |
-| **02** | `sso-delegation` | Multi-tier SSO (Client → Web Frontend → Backend DB) | Khai thác Unconstrained Delegation, trích xuất ccache chiếm quyền root | Chặn vé chuyển tiếp (`modprinc -forwardable`), kích hoạt Constrained S4U2Proxy | [📄 Báo cáo .docx](docs/reports/Bao_cao_Nho_SSO_Delegation.docx) \| [📕 .pdf](docs/reports/Bao_cao_Nho_SSO_Delegation.pdf) |
-| **03** | `sso-pkinit` | Passwordless SSO qua Chứng chỉ số X.509 (RFC 4556) | Cố tình nạp chứng chỉ giả mạo hoặc chứng chỉ đã bị thu hồi (Revoked) | Kiểm tra CRL thời gian thực, đối soát SAN và xóa mật khẩu tĩnh (`-nokey`) | [📄 Báo cáo .docx](docs/reports/Bao_cao_Nho_SSO_PKINIT.docx) \| [📕 .pdf](docs/reports/Bao_cao_Nho_SSO_PKINIT.pdf) |
-| **04** | `sso-crossrealm` | SSO Liên miền (Inter-realm Trust: STUDENT.LAB ↔ RESEARCH.LAB) | Lợi dụng vé chéo trái phép, mạo danh người dùng không thuộc danh sách phê duyệt | Cô lập phân quyền qua `.k5login`, thu hồi khóa vé chéo, chuẩn AES-256 | [📄 Báo cáo .docx](docs/reports/Bao_cao_Nho_SSO_CrossRealm.docx) \| [📕 .pdf](docs/reports/Bao_cao_Nho_SSO_CrossRealm.pdf) |
-| **05** | `sso-kerberoasting` | SSO Doanh nghiệp với Tài khoản dịch vụ SPN | Kerberoasting (MITRE T1558.003): Xin vé TGS và bẻ khóa offline mật khẩu yếu | Thiết lập chính sách mật khẩu phức tạp >20 ký tự và chuyển dịch sang AES-256 | [📄 Báo cáo .docx](docs/reports/Bao_cao_Nho_SSO_Kerberoasting.docx) \| [📕 .pdf](docs/reports/Bao_cao_Nho_SSO_Kerberoasting.pdf) |
-| **06** | `sso-passtheticket` | SSO Trạm làm việc đa người dùng (Shared Workstation) | Pass-the-Ticket (MITRE T1558.001): Trộm ccache từ `/tmp/krb5cc_*` | Chuyển đổi bộ nhớ vé sang Linux Kernel Keyring (`KEYRING:persistent:%{uid}`) | [📄 Báo cáo .docx](docs/reports/Bao_cao_Nho_SSO_PassTheTicket.docx) \| [📕 .pdf](docs/reports/Bao_cao_Nho_SSO_PassTheTicket.pdf) |
-| **07** | `sso-silverticket` | SSO Ứng dụng Web Intranet với Keytab | Silver Ticket (MITRE T1558.002): Trích xuất Keytab lộ lọt, rèn vé TGS giả | Phân quyền bảo vệ Keytab (`chmod 400`) & Xoay vòng khóa dịch vụ (Keytab Rotation kvno 2) | [📄 Báo cáo .docx](docs/reports/Bao_cao_Nho_SSO_SilverTicket.docx) \| [📕 .pdf](docs/reports/Bao_cao_Nho_SSO_SilverTicket.pdf) |
-| **08** | `sso-replay-skew` | Đồng bộ thời gian Kerberos & Replay Protection | Tấn công Replay vé xác thực AP-REQ và thử nghiệm sai lệch đồng hồ Clock Skew | Chặn đứng sai lệch thời gian (>300s: lỗi 37) và kích hoạt Replay Cache (lỗi 34) | [📄 Báo cáo .docx](docs/reports/Bao_cao_Nho_SSO_ReplaySkew.docx) \| [📕 .pdf](docs/reports/Bao_cao_Nho_SSO_ReplaySkew.pdf) |
+| **01** | `sso-kerberos` | Web SPNEGO (Apache) & Shell SSH SSO | AS-REP Roasting (MITRE T1558.004) nhắm tài khoản tắt Pre-Auth | Bắt buộc `+requires_preauth`, KDC trả mã lỗi 25, chuẩn AES-256 | [📄 SSO_Kerberos.docx](docs/reports/SSO_Kerberos.docx) \| [📕 .pdf](docs/reports/SSO_Kerberos.pdf) |
+| **02** | `sso-delegation` | Multi-tier SSO (Client → Web Frontend → Backend DB) | Khai thác Unconstrained Delegation, trích xuất ccache chiếm quyền root | Chặn vé chuyển tiếp (`modprinc -forwardable`), kích hoạt Constrained S4U2Proxy | [📄 SSO_Delegation.docx](docs/reports/SSO_Delegation.docx) \| [📕 .pdf](docs/reports/SSO_Delegation.pdf) |
+| **03** | `sso-pkinit` | Passwordless SSO qua Chứng chỉ số X.509 (RFC 4556) | Cố tình nạp chứng chỉ giả mạo hoặc chứng chỉ đã bị thu hồi (Revoked) | Kiểm tra CRL thời gian thực, đối soát SAN và xóa mật khẩu tĩnh (`-nokey`) | [📄 SSO_PKINIT.docx](docs/reports/SSO_PKINIT.docx) \| [📕 .pdf](docs/reports/SSO_PKINIT.pdf) |
+| **04** | `sso-crossrealm` | SSO Liên miền (Inter-realm Trust: STUDENT.LAB ↔ RESEARCH.LAB) | Lợi dụng vé chéo trái phép, mạo danh người dùng không thuộc danh sách phê duyệt | Cô lập phân quyền qua `.k5login`, thu hồi khóa vé chéo, chuẩn AES-256 | [📄 SSO_CrossRealm.docx](docs/reports/SSO_CrossRealm.docx) \| [📕 .pdf](docs/reports/SSO_CrossRealm.pdf) |
+| **05** | `sso-kerberoasting` | SSO Doanh nghiệp với Tài khoản dịch vụ SPN | Kerberoasting (MITRE T1558.003): Xin vé TGS và bẻ khóa offline mật khẩu yếu | Thiết lập chính sách mật khẩu phức tạp >20 ký tự và chuyển dịch sang AES-256 | [📄 SSO_Kerberoasting.docx](docs/reports/SSO_Kerberoasting.docx) \| [📕 .pdf](docs/reports/SSO_Kerberoasting.pdf) |
+| **06** | `sso-passtheticket` | SSO Trạm làm việc đa người dùng (Shared Workstation) | Pass-the-Ticket (MITRE T1558.001): Trộm ccache từ `/tmp/krb5cc_*` | Chuyển đổi bộ nhớ vé sang Linux Kernel Keyring (`KEYRING:persistent:%{uid}`) | [📄 SSO_PassTheTicket.docx](docs/reports/SSO_PassTheTicket.docx) \| [📕 .pdf](docs/reports/SSO_PassTheTicket.pdf) |
+| **07** | `sso-silverticket` | SSO Ứng dụng Web Intranet với Keytab | Silver Ticket (MITRE T1558.002): Trích xuất Keytab lộ lọt, rèn vé TGS giả | Phân quyền bảo vệ Keytab (`chmod 400`) & Xoay vòng khóa dịch vụ (Keytab Rotation kvno 2) | [📄 SSO_SilverTicket.docx](docs/reports/SSO_SilverTicket.docx) \| [📕 .pdf](docs/reports/SSO_SilverTicket.pdf) |
+| **08** | `sso-replay-skew` | Đồng bộ thời gian Kerberos & Replay Protection | Tấn công Replay vé xác thực AP-REQ và thử nghiệm sai lệch đồng hồ Clock Skew | Chặn đứng sai lệch thời gian (>300s: lỗi 37) và kích hoạt Replay Cache (lỗi 34) | [📄 SSO_ReplaySkew.docx](docs/reports/SSO_ReplaySkew.docx) \| [📕 .pdf](docs/reports/SSO_ReplaySkew.pdf) |
 
 ---
 
